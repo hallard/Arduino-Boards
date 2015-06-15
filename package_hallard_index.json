@@ -21,7 +21,7 @@
                   "online":"https://hallard.me/"
                },
                "boards":[
-                  { "name":"ULPNode" },
+                  { "name":"ULPNode" }
                ],
                "toolsDependencies":[
                   {
