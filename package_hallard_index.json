@@ -1,0 +1,46 @@
+{
+   "packages":[
+      {
+         "name":"Hallard",
+         "maintainer":"Charles-Henri Hallard",
+         "websiteURL":"https://hallard.me",
+         "email":"TechSupport@SparkFun.com",
+         "help":{
+            "online":"https://hallard.me"
+         },
+         "platforms":[
+            {
+               "name":"Hallard AVR Boards",
+               "architecture":"avr",
+               "version":"1.0.0",
+               "category":"Contributed",
+               "url":"https://github.com/hallard/Arduino-Boards/raw/master/boards.zip",
+               "archiveFileName":"boards.zip",
+               "checksum":"SHA-256:09950F8D5EC16802A13781440BDBCF92061D4473FA9C21284E5E146ABFE126BA",
+               "size":"204417",
+               "help":{
+                  "online":"https://hallard.me"
+               },
+               "boards":[
+                  { "name":"ULPNode 4MHz" },
+                  { "name":"ULPNode 8MHz" },
+                  { "name":"ULPNode 16MHz" }
+               ],
+               "toolsDependencies":[
+                  {
+                     "packager":"arduino",
+                     "name":"avr-gcc",
+                     "version":"4.8.1-arduino5"
+                  },
+                  {
+                     "packager":"arduino",
+                     "name":"avrdude",
+                     "version":"6.0.1-arduino5"
+                  }
+               ]
+            }
+         ],
+         "tools":[]
+      }
+   ]
+}
