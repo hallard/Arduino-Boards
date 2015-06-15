@@ -3,14 +3,13 @@
       {
          "name":"Hallard",
          "maintainer":"Charles-Henri Hallard",
-         "websiteURL":"https://hallard.me",
-         "email":"TechSupport@SparkFun.com",
+         "websiteURL":"http://hallard.me/category/ulpnode/",
          "help":{
-            "online":"https://hallard.me"
+            "online":"http://hallard.me/"
          },
          "platforms":[
             {
-               "name":"Hallard AVR Boards",
+               "name":"ULPNode Arduino Boards",
                "architecture":"avr",
                "version":"1.0.0",
                "category":"Contributed",
@@ -19,12 +18,10 @@
                "checksum":"SHA-256:09950F8D5EC16802A13781440BDBCF92061D4473FA9C21284E5E146ABFE126BA",
                "size":"204417",
                "help":{
-                  "online":"https://hallard.me"
+                  "online":"https://hallard.me/"
                },
                "boards":[
-                  { "name":"ULPNode 4MHz" },
-                  { "name":"ULPNode 8MHz" },
-                  { "name":"ULPNode 16MHz" }
+                  { "name":"ULPNode" },
                ],
                "toolsDependencies":[
                   {
