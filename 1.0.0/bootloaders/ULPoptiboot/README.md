@@ -20,7 +20,8 @@ List of features implemented in this version:
 - Exporting function to drive the WS2812(B) LED (or a strip) from Arduino Sketch
 - Exporting function to drive the DC Booster from Arduino Sketch
 - Exporting function to change clock speed from Arduino Sketch
-- During flash, RBG is blinking Red when writing and Green when reading
+- During flash, RGB led is blinking Red when writing and Green when reading
+- Able to report to user sketch what was done at boot (Brown Out, Watdchdog, Upload sketch, ...)
 
 This is an initial release, it could contain bugs, but works fine for now. Please let me know if you find issues.
 
@@ -30,7 +31,7 @@ I copied mine at : arduino-install-dir\hardware\arduino\bootloaders\ulpnode\
 Backup the original files before overwrite all files.~~  
 Install now using Arduino IDE boards manager, see how to for ULPNode [here][8]
 
-bootloader build is done modifying file ulpnode.bat (for bootloader options) and Makefile to adjust correct paths of build environment. I done it on windows, not tested under other OS, but should me easier.
+Bootloader build is done modifying file ulpnode.bat (for bootloader options) and Makefile [here][9] to adjust correct paths of build environment. I done it on windows, not tested under other OS, but should me easier.
 
 ###Possible issues
 - None for now
@@ -62,3 +63,4 @@ See news and other projects on my [blog][1]
 [6]: https://creativecommons.org/licenses/
 [7]: https://github.com/Optiboot/optiboot
 [8]: https://github.com/hallard/Arduino-Boards
+[9]: https://github.com/hallard/Arduino-Boards/tree/master/1.0.0/bootloaders/ULPoptiboot
