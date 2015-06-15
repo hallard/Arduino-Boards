@@ -13,6 +13,7 @@ To add this support to your Arduino IDE, simply launch the IDE then
 * go to menu File / Preferences, add the link https://github.com/hallard/Arduino-Boards/raw/master/package_hallard_index.json to the Additional Boards Manager URLs section then ckick OK
 * go to Menu Tools / Boards / Board Manager, in the list select ULPNode Arduino Boards and click Instamm
 * Once installed you should see ULPNode board into boards menu
+* In case of CRC error while installing the package, please remove old downloaded file hallard-boards located in username\AppData\Roaming\Arduino15\staging\packages (for windows)
 
 
 ### Notes

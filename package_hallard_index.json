@@ -15,7 +15,7 @@
                "version":"1.0.0",
                "category":"Contributed",
                "url":"https://github.com/hallard/Arduino-Boards/raw/master/boards.zip",
-               "archiveFileName":"boards.zip",
+               "archiveFileName":"hallard-boards.zip",
                "checksum":"SHA-256:ba587745fd2b05281f474cfec4cf6ec7288b68cf7f1e70d33354bf31eb14deed",
                "size":"204417",
                "help":{
