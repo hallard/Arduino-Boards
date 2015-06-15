@@ -1,0 +1,69 @@
+##############################################################
+#                       ULPNode 4MHz                         #
+# this will build sketch that will run at 4MHz on ULPNode    #
+# bootloader of this board is running up to 8MHz for upload  #
+# driving WS2812B led is done at 8MHz on bootloader          #
+##############################################################
+ULPNode4MHz.name=ULPNode 4MHz (FTDI 250K upload)
+ULPNode4MHz.upload.tool=arduino:avrdude
+ULPNode4MHz.upload.protocol=arduino
+ULPNode4MHz.upload.maximum_size=31744
+ULPNode4MHz.upload.speed=250000
+ULPNode4MHz.bootloader.low_fuses=0x6e
+ULPNode4MHz.bootloader.high_fuses=0xdc
+ULPNode4MHz.bootloader.extended_fuses=0xfe
+ULPNode4MHz.bootloader.path=ULPNode
+ULPNode4MHz.bootloader.file=ulpnode_250000_8000000Hz
+ULPNode4MHz.bootloader.unlock_bits=0x3F 
+ULPNode4MHz.bootloader.lock_bits=0xEF
+ULPNode4MHz.build.mcu=atmega328p
+ULPNode4MHz.build.f_cpu=4000000L
+ULPNode4MHz.build.core=arduino:arduino
+ULPNode4MHz.build.variant=arduino:standard
+
+##############################################################
+#                       ULPNode 8MHz                         #
+# this will build sketch that will run at 8MHz on ULPNode    #
+# bootloader of this board is running up to 8MHz for upload  #
+# driving WS2812B led is done at 8MHz on bootloader          #
+##############################################################
+ULPNode8MHz.name=ULPNode 8MHz (FTDI 250K upload)
+ULPNode8MHz.upload.tool=arduino:avrdude
+ULPNode8MHz.upload.protocol=arduino
+ULPNode8MHz.upload.maximum_size=31744
+ULPNode8MHz.upload.speed=250000
+ULPNode8MHz.bootloader.low_fuses=0x6e
+ULPNode8MHz.bootloader.high_fuses=0xdc
+ULPNode8MHz.bootloader.extended_fuses=0xfe
+ULPNode8MHz.bootloader.path=ULPNode
+ULPNode8MHz.bootloader.file=ulpnode_250000_8000000Hz
+ULPNode8MHz.bootloader.unlock_bits=0x3F 
+ULPNode8MHz.bootloader.lock_bits=0xEF
+ULPNode8MHz.build.mcu=atmega328p
+ULPNode8MHz.build.f_cpu=4000000L
+ULPNode8MHz.build.core=arduino:arduino
+ULPNode8MHz.build.variant=arduino:standard
+
+##############################################################
+#                      ULPNode 16MHz                         #
+# this will build sketch that will run at 16MHz on ULPNode   #
+# bootloader of this board is running up to 16MHz for upload #
+# driving WS2812B led is done at 16MHz on bootloader         #
+##############################################################
+ULPNode16MHz.name=ULPNode 16MHz (FTDI 250K upload)
+ULPNode16MHz.upload.tool=arduino:avrdude
+ULPNode16MHz.upload.protocol=arduino
+ULPNode16MHz.upload.maximum_size=31744
+ULPNode16MHz.upload.speed=250000
+ULPNode16MHz.bootloader.low_fuses=0x6e
+ULPNode16MHz.bootloader.high_fuses=0xdc
+ULPNode16MHz.bootloader.extended_fuses=0xfe
+ULPNode16MHz.bootloader.path=ULPNode
+ULPNode16MHz.bootloader.file=ulpnode_250000_16000000Hz
+ULPNode16MHz.bootloader.unlock_bits=0x3F
+ULPNode16MHz.bootloader.lock_bits=0xEF
+ULPNode16MHz.build.mcu=atmega328p
+ULPNode16MHz.build.f_cpu=16000000L
+ULPNode16MHz.build.core=arduino:arduino
+ULPNode16MHz.build.variant=arduino:standard
+
