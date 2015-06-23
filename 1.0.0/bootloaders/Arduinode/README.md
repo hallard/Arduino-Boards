@@ -1,0 +1,53 @@
+Arduinode
+=========
+
+Custom Optiboot for the early prototype of Ultra Low Power Wireless Arduino Node  
+You can find all technical and detailed information on my [blog][2]  
+
+The added code will still result in a compiled size of just under 1kb  
+(Originally Optiboot is under 0.5kb)
+
+##Features
+List of features implemented in this version:
+
+- Designed Ultra Low Power Wireless Node
+- Power OFF Wireless Radio Module at boot
+- Power OFF Sensors at boot
+- Direct boot to application Sketch (no wait)
+
+This is an initial release for the prototype, it should not be used except for custom use.
+You need to use the one in ULPNode folder
+
+###Installation
+Copy the content of the Arduinode folder into a new folder in your Arduino bootloaders folder  
+I copied mine at : arduino-install-dir\hardware\arduino\bootloaders\Arduinode\  
+Backup the original files before overwrite all files.  
+arduimake.bat
+
+###Possible issues
+- None for now
+
+##Blog dedicated post
+See this [post][3] for detailed information
+
+##Why
+- To reduce consumption in Ultra Low Power Node
+
+##Reference
+Original Optiboot Bootloader 
+
+- Optiboot on [google code][5]
+
+##License
+Copyright Charles-Henri Hallard (2014)  
+[Attribution-ShareAlike CC BY-SA][6]
+
+##Misc
+See news and other projects on my [blog][1] 
+ 
+[1]: http://hallard.me
+[2]: http://hallard.me/bp-ulpnode/
+[3]: http://hallard.me/ulpnode-bootloader/
+[4]: https://github.com/hallard/ULPNode/ULPoptiboot/Examples/WS2812_Demo_Sketch/WS2812_Demo_Sketch.ino
+[5]: https://code.google.com/p/optiboot/
+[6]: https://creativecommons.org/licenses/
