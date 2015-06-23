@@ -1,5 +1,12 @@
 @ECHO OFF
-REM Atmega pin mapping to Arduino pin name, for reminder
+REM ====================================================
+REM = windows Batch file to compile ULPNode bootloader =
+REM = see http://hallard.me/ulp-bootloader             =
+REM =																								   =
+REM = V1.0 Charles-Henri Hallard http://hallard.me     =
+REM =																								   =
+REM = Atmega329 pin mapping to Arduino pin name        =
+REM = as a reminder                                    =
 REM ====================================================
 REM AT -> Arduino
 REM C5 -> A5
@@ -28,29 +35,9 @@ REM Set this value for new Arduino environement version >= 1.5 (latest)
 REM Arduino >= 1.5
 SET BUILDENV=..\..\..\..\tools\avr\utils\bin\
 
-REM let's compile a target for 16MHz 115200 kbps just for use as arduino Uno compatibility
-REM without using any power pins or booster, this should work on all Arduino Boards
-REM SET AVR_FREQ=AVR_FREQ=16000000
-REM SET BAUD_RATE=BAUD_RATE=115200
-
-REM Arduino classic LED pin on Arduino
-REM SET LED=LED=B5
-REM SET LED_START_FLASHES=LED_START_FLASHES=1
-
-REM Compilation call for ULPNode working as Uno 16MHz 115200 kbps
-REM @ECHO ON
-REM %BUILDENV%\make OS=windows ENV=arduino %AVR_FREQ% %BAUD_RATE% %LED_START_FLASHES% %LED% ulpnode %*
-REM @ECHO OFF
-
-REM Reset env variable that could not be used in 2nd build
-SET LED=
-SET LED_START_FLASHES=
-
-REM ULPNode need to run at 8MHz (but we have 16MHz crystal)
-SET AVR_FREQ=AVR_FREQ=8000000
-REM SET AVR_FREQ=AVR_FREQ=16000000
-SET BAUD_RATE=BAUD_RATE=250000
-
+REM ==================================
+REM = Set default values for ULPNode =
+REM ==================================
 REM Arduino classic LED pin on ULPNode Arduino D5
 SET LED=LED=D5
 
@@ -60,8 +47,9 @@ SET WS2812=WS2812=D6
 REM Number of flash when entering bootloader
 SET LED_START_FLASHES=LED_START_FLASHES=3
 
-REM flash when uploading
-SET LED_DATA_FLASH=LED_DATA_FLASH=1
+REM flash when uploading, value of LED_DATA_FLASH 
+REM is RGB Brigthness from (0 off to 255 full bright)
+SET LED_DATA_FLASH=LED_DATA_FLASH=64
 
 REM Wake up switch avr pin Arduino D4
 SET WAKE_SWITCH=WAKE_SWITCH=D4
@@ -78,30 +66,38 @@ SET PWR_BOOST=PWR_BOOST=C2
 REM this will change optiboot version from 6.2 to 5.2 (6-1) (non existing version)
 SET OPTIBOOT_CUSTOMVER=OPTIBOOT_CUSTOMVER=-1
 
+REM this will set target file name prefix
+SET ULPN_BOARD=ULPNode
 
-REM Arduinode V1.3
-REM Number of flash when entering bootloader
-REM SET LED_START_FLASHES=LED_START_FLASHES=1
-REM booster enable -> I2C Power
-REM SET PWR_BOOST=PWR_BOOST=D7
-REM SET PWR_BOOST=
-REM power sensor avr pin A2
-REM SET PWR_SENSOR=PWR_SENSOR=C2
-REM power RF Radio module avr D9
-REM SET PWR_RF=PWR_RF=B1
-REM Arduino classic LED pin D6
-REM SET LED=LED=D6
-REM Wake up switch avr pin  D3
-REM SET WAKE_SWITCH=WAKE_SWITCH=D3
-REM WS2812B Data In avr pin D4
-REM SET WS2812=
-
-
-REM Compilation call for ULPNode
+REM =====================================
+REM =      ULPNode @8MHz / 250Kbps      =
+REM =====================================
+SET AVR_FREQ=AVR_FREQ=8000000
+SET BAUD_RATE=BAUD_RATE=250000
 @ECHO ON
 %BUILDENV%make OS=windows ENV=arduino %AVR_FREQ% %BAUD_RATE% %LED% %LED_START_FLASHES% %LED_DATA_FLASH% %WS2812% %WAKE_SWITCH% %PWR_SENSOR% %PWR_BOOST% %PWR_RF% %OPTIBOOT_CUSTOMVER% ulpnode %*
 @ECHO OFF
 
+REM =====================================
+REM =     ULPNode @16MHz / 250Kbps      =
+REM =====================================
+SET AVR_FREQ=
+SET AVR_FREQ=AVR_FREQ=16000000
+REM all other as above
+@ECHO ON
+%BUILDENV%make OS=windows ENV=arduino %AVR_FREQ% %BAUD_RATE% %LED% %LED_START_FLASHES% %LED_DATA_FLASH% %WS2812% %WAKE_SWITCH% %PWR_SENSOR% %PWR_BOOST% %PWR_RF% %OPTIBOOT_CUSTOMVER% ulpnode %*
+@ECHO OFF
+
+REM =====================================
+REM =     ULPNode @16MHz / 115Kbps      =
+REM =        Act as classic UNO         =
+REM =====================================
+SET BAUD_RATE=
+SET BAUD_RATE=BAUD_RATE=115200
+REM all other as above
+@ECHO ON
+%BUILDENV%make OS=windows ENV=arduino %AVR_FREQ% %BAUD_RATE% %LED% %LED_START_FLASHES% %LED_DATA_FLASH% %WS2812% %WAKE_SWITCH% %PWR_SENSOR% %PWR_BOOST% %PWR_RF% %OPTIBOOT_CUSTOMVER% ulpnode %*
+@ECHO OFF
 
 REM Reset env variable
 SET AVR_FREQ=
@@ -114,5 +110,6 @@ SET PWR_SENSOR=
 SET PWR_RF=
 SET PWR_BOOST=
 SET OPTIBOOT_CUSTOMVER
+SET ULPN_BOARD=
 
 
