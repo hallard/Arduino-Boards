@@ -14,24 +14,18 @@ List of features implemented in this version:
 - Power OFF Wireless Radio Module at boot
 - Power OFF Sensors at boot
 - Direct boot to application Sketch (no wait)
-- Entering Bootloading only by pressing Wake switch or when FTDI Adapter is connected (autodetect)
+- Entering Bootloading only by pressing Wake switch or when FTDI Adapter is connected
 - Default Arduino LED replaced by WS2812B RGB LED
 - Included driver for WS2812(B) LED
 - Exporting function to drive the WS2812(B) LED (or a strip) from Arduino Sketch
-- Exporting function to drive the DC Booster from Arduino Sketch
-- Exporting function to change clock speed from Arduino Sketch
-- During flash, RGB led is blinking Red when writing and Green when reading
-- Able to report to user sketch what was done at boot (Brown Out, Watdchdog, Upload sketch, ...)
 
 This is an initial release, it could contain bugs, but works fine for now. Please let me know if you find issues.
 
 ###Installation
-~~Copy the content of the ULPoptiboot folder into a new folder in your Arduino bootloaders folder  
+Copy the content of the ULPoptiboot folder into a new folder in your Arduino bootloaders folder  
 I copied mine at : arduino-install-dir\hardware\arduino\bootloaders\ulpnode\  
-Backup the original files before overwrite all files.~~  
-Install now using Arduino IDE boards manager, see how to for ULPNode [here][8]
-
-Bootloader build is done modifying file ulpnode.bat (for bootloader options) and Makefile [here][9] to adjust correct paths of build environment. I done it on windows, not tested under other OS, but should me easier.
+Backup the original files before overwrite all files.  
+make ulpnode  
 
 ###Possible issues
 - None for now
@@ -46,7 +40,7 @@ See this [post][3] for detailed information
 ##Reference
 Original Optiboot Bootloader 
 
-- Optiboot on ~~[google code][5]~~ now on [github][7]
+- Optiboot on [google code][5]
 
 ##License
 Copyright Charles-Henri Hallard (2014)  
@@ -56,11 +50,8 @@ Copyright Charles-Henri Hallard (2014)
 See news and other projects on my [blog][1] 
  
 [1]: http://hallard.me
-[2]: http://hallard.me/category/ulpnode/
+[2]: http://hallard.me/bp-ulpnode/
 [3]: http://hallard.me/ulpnode-bootloader/
 [4]: https://github.com/hallard/ULPNode/ULPoptiboot/Examples/WS2812_Demo_Sketch/WS2812_Demo_Sketch.ino
 [5]: https://code.google.com/p/optiboot/
 [6]: https://creativecommons.org/licenses/
-[7]: https://github.com/Optiboot/optiboot
-[8]: https://github.com/hallard/Arduino-Boards
-[9]: https://github.com/hallard/Arduino-Boards/tree/master/1.0.0/bootloaders/ULPoptiboot
