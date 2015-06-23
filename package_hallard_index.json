@@ -1,12 +1,12 @@
 {
    "packages":[
       {
-         "name":"Hallard",
+         "name":"Hallard.me",
          "maintainer":"Charles-Henri Hallard",
          "websiteURL":"http://hallard.me/category/ulpnode/",
          "email":"none@hallard.me",
          "help":{
-            "online":"http://hallard.me/"
+            "online":"https://community.hallard.me/"
          },
          "platforms":[
             {
@@ -16,13 +16,14 @@
                "category":"Contributed",
                "url":"https://github.com/hallard/Arduino-Boards/raw/master/hallard-boards.zip",
                "archiveFileName":"hallard-boards.zip",
-               "checksum":"SHA-256:ba587745fd2b05281f474cfec4cf6ec7288b68cf7f1e70d33354bf31eb14deed",
+               "checksum":"SHA-256:ED0E8CEDB0D4C4A0C759077C7E07008366ED26DC7C8B06707AB44F00B24D6049",
                "size":"204417",
                "help":{
-                  "online":"https://hallard.me/"
+                  "online":"https://community/hallard.me/"
                },
                "boards":[
                   { "name":"ULPNode" }
+                  { "name":"ArduiNode" }
                ],
                "toolsDependencies":[
                   {
