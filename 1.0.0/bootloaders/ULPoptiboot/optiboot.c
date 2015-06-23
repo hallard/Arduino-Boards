@@ -91,19 +91,37 @@
 /*                                                        */
 /**********************************************************/
 
-
 /**********************************************************/
 /*                                                        */
 /* Optional defines:                                      */
 /*                                                        */
 /**********************************************************/
 /*                                                        */
-/* BIGBOOT:                                              */
+/* WS2812:                                                */
+/* WS2812B LED Data In avr pin (D6 on ULPNode)            */
+/*                                                        */
+/* WAKE_SWITCH:                                           */
+/* Wake up switch avr pin (D4 on ULPNode)                 */
+/*                                                        */
+/* PWR_SENSOR:                                            */
+/* power sensor avr pin (D9 on ULPNode)                   */
+/*                                                        */
+/* PWR_RF:                                                */
+/* power RF Radio module avr pin (D7 on ULPNode)          */
+/*                                                        */
+/* PWR_BOOST:                                             */
+/* DC/DC booster enable avr pin Arduino (A2 on ULPNode)   */
+/*                                                        */
+/* BIGBOOT:                                               */
+/* Build a 1k bootloader, not 512 bytes. This turns on    */
+/* extra functionality.                                   */
+/* BIGBOOT:                                               */
+/*                                                        */
 /* Build a 1k bootloader, not 512 bytes. This turns on    */
 /* extra functionality.                                   */
 /*                                                        */
 /* BAUD_RATE:                                             */
-/* Set bootloader baud rate.                              */
+/* Set bootloader baud rate (250000Kbps on ULPNode)       */
 /*                                                        */
 /* SOFT_UART:                                             */
 /* Use AVR305 soft-UART instead of hardware UART.         */
@@ -114,6 +132,9 @@
 /* LED_DATA_FLASH:                                        */
 /* Flash LED when transferring data. For boards without   */
 /* TX or RX LEDs, or for people who like blinky lights.   */
+/* Flash RGB LED RED/GREEN on wrtite/read flash 					*/
+/* LED_DATA_FLASH value is RGB Brightness, set at least 16*/
+/* to flash RGB, WS2812 and LED_START_FLASHES must be set */
 /*                                                        */
 /* SUPPORT_EEPROM:                                        */
 /* Support reading and writing from EEPROM. This is not   */
@@ -128,7 +149,7 @@
 /* one hardware uart (644P, 1284P, etc)                   */
 /*                                                        */
 /**********************************************************/
-
+
 /**********************************************************/
 /* Version Numbers!                                       */
 /*                                                        */
@@ -150,43 +171,44 @@
 /**********************************************************/
 
 /**********************************************************/
-/* Edit History:					  */
-/*							  */
-/* Jun2015						  */
+/* Edit History:					                                */
+/*							                                          */
+/* Jun2015						                                    */
 /* 6.2 CHH   : Added frequency Compiled for in func table */
 /*              added function to set core freq from user */
 /*              user code function now in a table         */
-/* Sep2014						  */
+/*              blink RGB Red/Green on flash write/read   */
+/* Sep2014						                                    */
 /* 6.2 CHH   : Modified for ULPNode                       */
 /*              added driver for WS2812                   */
 /*              added Low Power function for ULPNode      */
 /*              see http://hallard.me/ulp-bootloader      */
-/* Aug 2014						  */
+/* Aug 2014						                                    */
 /* 6.2 WestfW: make size of length variables dependent    */
 /*              on the SPM_PAGESIZE.  This saves space    */
 /*              on the chips where it's most important.   */
-/* 6.1 WestfW: Fix OPTIBOOT_CUSTOMVER (send it!)	  */
-/*             Make no-wait mod less picky about	  */
-/*               skipping the bootloader.		  */
-/*             Remove some dead code			  */
-/* Jun 2014						  */
-/* 6.0 WestfW: Modularize memory read/write functions	  */
-/*             Remove serial/flash overlap		  */
-/*              (and all references to NRWWSTART/etc)	  */
+/* 6.1 WestfW: Fix OPTIBOOT_CUSTOMVER (send it!)	        */
+/*             Make no-wait mod less picky about	        */
+/*               skipping the bootloader.		  						*/
+/*             Remove some dead code			  							*/
+/* Jun 2014						  																	*/
+/* 6.0 WestfW: Modularize memory read/write functions	  	*/
+/*             Remove serial/flash overlap		  					*/
+/*              (and all references to NRWWSTART/etc)	  	*/
 /*             Correctly handle pagesize > 255bytes       */
 /*             Add EEPROM support in BIGBOOT (1284)       */
 /*             EEPROM write on small chips now causes err */
 /*             Split Makefile into smaller pieces         */
-/*             Add Wicked devices Wildfire		  */
-/*	       Move UART=n conditionals into pin_defs.h   */
-/*	       Remove LUDICOUS_SPEED option		  */
-/*	       Replace inline assembler for .version      */
+/*             Add Wicked devices Wildfire		  					*/
+/*	       Move UART=n conditionals into pin_defs.h   		*/
+/*	       Remove LUDICOUS_SPEED option		  							*/
+/*	       Replace inline assembler for .version      		*/
 /*              and add OPTIBOOT_CUSTOMVER for user code  */
 /*             Fix LED value for Bobuino (Makefile)       */
 /*             Make all functions explicitly inline or    */
 /*              noinline, so we fit when using gcc4.8     */
-/*             Change optimization options for gcc4.8	  */
-/*             Make ENV=arduino work in 1.5.x trees.	  */
+/*             Change optimization options for gcc4.8	  	*/
+/*             Make ENV=arduino work in 1.5.x trees.	  	*/
 /* May 2014                                               */
 /* 5.0 WestfW: Add support for 1Mbps UART                 */
 /* Mar 2013                                               */
@@ -197,7 +219,7 @@
 /* 4.6 WestfW/Pito: Add ATmega32 support                  */
 /* 4.6 WestfW/radoni: Don't set LED_PIN as an output if   */
 /*                    not used. (LED_START_FLASHES = 0)   */
-/* Jan 2013						  */
+/* Jan 2013						  																	*/
 /* 4.6 WestfW/dkinzer: use autoincrement lpm for read     */
 /* 4.6 WestfW/dkinzer: pass reset cause to app in R2      */
 /* Mar 2012                                               */
@@ -228,7 +250,7 @@
 /*  http://code.google.com/p/arduino/issues/detail?id=368n*/
 /* 4.2 WestfW: reduce code size, fix timeouts, change     */
 /*             verifySpace to use WDT instead of appstart */
-/* 4.1 WestfW: put version number in binary.		  */
+/* 4.1 WestfW: put version number in binary.		  				*/
 /**********************************************************/
 
 #define OPTIBOOT_MAJVER 6
@@ -247,8 +269,6 @@
 unsigned const int __attribute__((section(".version"))) 
 optiboot_version = 256*(OPTIBOOT_MAJVER + OPTIBOOT_CUSTOMVER) + OPTIBOOT_MINVER;
 
-
-
 #include <inttypes.h>
 #include <avr/io.h>
 #include <avr/pgmspace.h>
@@ -593,7 +613,6 @@ int main(void) {
   // Set the clock speed
   //clock_prescale_set(clock_div_2);
   
-
   // powering the sensors and RGB LED if wa want to blink it
   #if defined (PWR_SENSOR) && defined (WS2812) && (LED_START_FLASHES > 0)
     PWR_SENSOR_PORT &= ~_BV(PWR_SENSOR); // Set pin to 0 (enable powering module)
@@ -740,7 +759,7 @@ int main(void) {
       
       // Writing to flash, red blink
       #if defined(WS2812) && defined(LED_DATA_FLASH)
-        led.r = 32;
+        led.r = (uint8_t) LED_DATA_FLASH;
         led.g = led.b = 0;
         pled = (uint8_t *) &led; 
 
@@ -838,7 +857,7 @@ int main(void) {
       
       // reading from flash, green blink
       #if defined(WS2812) && defined(LED_DATA_FLASH)
-        led.g = 32;
+        led.g = (uint8_t) LED_DATA_FLASH;
         led.r = led.b = 0;
         pled = (uint8_t *) &led; 
 
