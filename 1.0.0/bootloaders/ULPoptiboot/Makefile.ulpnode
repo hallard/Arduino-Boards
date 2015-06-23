@@ -27,6 +27,11 @@ ifdef WS2812
 ULPNODE_CMD += -DWS2812=$(WS2812)
 endif
 
+# this is board type to differenciate generated hex files
+ifdef ULPN_BOARD
+ULPNODE_CMD += -DULPN_BOARD=$(ULPN_BOARD)
+endif
+
 # this will change optiboot version from 6.2 to 5.2 (non existing version)
 ifdef OPTIBOOT_CUSTOMVER
 ULPNODE_CMD += -DOPTIBOOT_CUSTOMVER=$(OPTIBOOT_CUSTOMVER)
@@ -46,8 +51,8 @@ ulpnode: AVR_FREQ ?= 16000000L
 ulpnode: LDSECTIONS  = -Wl,--section-start=.text=0x7c00 -Wl,--section-start=.functable=0x7ff0 -Wl,--section-start=.version=0x7ffe 
 
 ulpnode: CFLAGS += $(UARTCMD)
-ulpnode: ulpnode_$(BAUD_RATE)_$(AVR_FREQ)Hz.hex
-ulpnode: ulpnode_$(BAUD_RATE)_$(AVR_FREQ)Hz.lst
+ulpnode: $(ULPN_BOARD)_$(BAUD_RATE)_$(AVR_FREQ)Hz.hex
+ulpnode: $(ULPN_BOARD)_$(BAUD_RATE)_$(AVR_FREQ)Hz.lst
 
 # tricky part I spent time to find out why my new section .functable was not working
 # we need to add it to this part
