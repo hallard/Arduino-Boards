@@ -22,7 +22,7 @@
                   "online":"https://community/hallard.me/"
                },
                "boards":[
-                  { "name":"ULPNode" }
+                  { "name":"ULPNode" },
                   { "name":"ArduiNode" }
                ],
                "toolsDependencies":[
