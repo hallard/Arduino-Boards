@@ -5,18 +5,23 @@
 # driving WS2812B led is done at 8MHz on bootloader          #
 ##############################################################
 ULPNode4MHz.name=ULPNode 4MHz (FTDI 250K upload)
+
 ULPNode4MHz.upload.tool=arduino:avrdude
 ULPNode4MHz.upload.protocol=arduino
 ULPNode4MHz.upload.maximum_size=31744
+ULPNode4MHz.upload.maximum_data_size=2048
 ULPNode4MHz.upload.speed=250000
+
 ULPNode4MHz.bootloader.low_fuses=0x6e
 ULPNode4MHz.bootloader.high_fuses=0xdc
-ULPNode4MHz.bootloader.extended_fuses=0xfe
-ULPNode4MHz.bootloader.path=ULPNode
-ULPNode4MHz.bootloader.file=ulpnode_250000_8000000Hz
+ULPNode4MHz.bootloader.extended_fuses=0x06
+ULPNode4MHz.bootloader.file=ULPoptiboot/ulpnode_250000_8000000Hz.hex
 ULPNode4MHz.bootloader.unlock_bits=0x3F 
-ULPNode4MHz.bootloader.lock_bits=0xEF
+ULPNode4MHz.bootloader.lock_bits=0x2F
+ULPNode4MHz.bootloader.tool=arduino:avrdude
+
 ULPNode4MHz.build.mcu=atmega328p
+ULPNode4MHz.build.board=ULPNODE_V10
 ULPNode4MHz.build.f_cpu=4000000L
 ULPNode4MHz.build.core=arduino:arduino
 ULPNode4MHz.build.variant=arduino:standard
@@ -28,19 +33,24 @@ ULPNode4MHz.build.variant=arduino:standard
 # driving WS2812B led is done at 8MHz on bootloader          #
 ##############################################################
 ULPNode8MHz.name=ULPNode 8MHz (FTDI 250K upload)
+
 ULPNode8MHz.upload.tool=arduino:avrdude
 ULPNode8MHz.upload.protocol=arduino
 ULPNode8MHz.upload.maximum_size=31744
+ULPNode8MHz.upload.maximum_data_size=2048
+
 ULPNode8MHz.upload.speed=250000
 ULPNode8MHz.bootloader.low_fuses=0x6e
 ULPNode8MHz.bootloader.high_fuses=0xdc
 ULPNode8MHz.bootloader.extended_fuses=0xfe
-ULPNode8MHz.bootloader.path=ULPNode
-ULPNode8MHz.bootloader.file=ulpnode_250000_8000000Hz
+ULPNode8MHz.bootloader.file=ULPoptiboot/ulpnode_250000_8000000Hz.hex
 ULPNode8MHz.bootloader.unlock_bits=0x3F 
-ULPNode8MHz.bootloader.lock_bits=0xEF
+ULPNode8MHz.bootloader.lock_bits=0x2F
+ULPNode8MHz.bootloader.tool=arduino:avrdude
+
 ULPNode8MHz.build.mcu=atmega328p
-ULPNode8MHz.build.f_cpu=4000000L
+ULPNode8MHz.build.board=ULPNODE_V10
+ULPNode8MHz.build.f_cpu=8000000L
 ULPNode8MHz.build.core=arduino:arduino
 ULPNode8MHz.build.variant=arduino:standard
 
@@ -51,19 +61,82 @@ ULPNode8MHz.build.variant=arduino:standard
 # driving WS2812B led is done at 16MHz on bootloader         #
 ##############################################################
 ULPNode16MHz.name=ULPNode 16MHz (FTDI 250K upload)
+
 ULPNode16MHz.upload.tool=arduino:avrdude
 ULPNode16MHz.upload.protocol=arduino
 ULPNode16MHz.upload.maximum_size=31744
+ULPNode16MHz.upload.maximum_data_size=2048
 ULPNode16MHz.upload.speed=250000
+
 ULPNode16MHz.bootloader.low_fuses=0x6e
 ULPNode16MHz.bootloader.high_fuses=0xdc
 ULPNode16MHz.bootloader.extended_fuses=0xfe
-ULPNode16MHz.bootloader.path=ULPNode
-ULPNode16MHz.bootloader.file=ulpnode_250000_16000000Hz
+ULPNode16MHz.bootloader.file=ULPoptiboot/ulpnode_250000_16000000Hz.hex
 ULPNode16MHz.bootloader.unlock_bits=0x3F
-ULPNode16MHz.bootloader.lock_bits=0xEF
+ULPNode16MHz.bootloader.lock_bits=0x2F
+ULPNode16MHz.bootloader.tool=arduino:avrdude
+
 ULPNode16MHz.build.mcu=atmega328p
+ULPNode16MHz.build.board=ULPNODE_V10
 ULPNode16MHz.build.f_cpu=16000000L
 ULPNode16MHz.build.core=arduino:arduino
 ULPNode16MHz.build.variant=arduino:standard
+
+##############################################################
+#                     Arduinode V1.3                         #
+# I use a lot these 1st ULPNode proto board for testing      #
+# bootloader of this board is just UNO running up 250000KBps #
+##############################################################
+ArduinodeV13.name=Arduinode 1.3 (FTDI 250K upload)
+
+ArduinodeV13.upload.tool=arduino:avrdude
+ArduinodeV13.upload.protocol=arduino
+ArduinodeV13.upload.maximum_size=32256
+ArduinodeV13.upload.maximum_data_size=2048
+ArduinodeV13.upload.speed=250000
+
+ArduinodeV13.bootloader.low_fuses=0xff
+ArduinodeV13.bootloader.high_fuses=0xde
+ArduinodeV13.bootloader.extended_fuses=0x05
+ArduinodeV13.bootloader.path=arduinode
+ArduinodeV13.bootloader.file=Arduinode/optiboot_atmega328_250000_16000000Hz_LedD6_V13.hex
+ArduinodeV13.bootloader.unlock_bits=0x3F
+ArduinodeV13.bootloader.lock_bits=0x2F
+ArduinodeV13.bootloader.tool=arduino:avrdude
+
+ArduinodeV13.build.mcu=atmega328p
+ArduinodeV13.build.board=ARDUINODE_V13
+ArduinodeV13.build.f_cpu=16000000L
+ArduinodeV13.build.core=arduino:arduino
+ArduinodeV13.build.variant=Arduinode
+
+##############################################################
+#                     Arduinode V1.0                         #
+# I use a lot these 1st ULPNode proto board for testing      #
+# bootloader of this board is just UNO running up 250000KBps #
+##############################################################
+ArduinodeV10.name=Arduinode 1.0 (FTDI 250K upload)
+
+ArduinodeV10.upload.tool=arduino:avrdude
+ArduinodeV10.upload.protocol=arduino
+ArduinodeV10.upload.maximum_size=32256
+ArduinodeV10.upload.maximum_data_size=2048
+ArduinodeV10.upload.speed=250000
+
+ArduinodeV10.bootloader.low_fuses=0xff
+ArduinodeV10.bootloader.high_fuses=0xde
+ArduinodeV10.bootloader.extended_fuses=0x05
+ArduinodeV10.bootloader.path=arduinode
+ArduinodeV10.bootloader.file=Arduinode/optiboot_atmega328_250000_16000000Hz_LedD3_V10.hex
+ArduinodeV10.bootloader.unlock_bits=0x3F
+ArduinodeV10.bootloader.lock_bits=0x2F
+ArduinodeV10.bootloader.tool=arduino:avrdude
+
+ArduinodeV10.build.mcu=atmega328p
+ArduinodeV10.build.board=ARDUINODE_V10
+ArduinodeV10.build.f_cpu=16000000L
+ArduinodeV10.build.core=arduino:arduino
+ArduinodeV10.build.variant=Arduinode
+
+
 
