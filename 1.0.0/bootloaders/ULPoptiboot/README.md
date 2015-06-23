@@ -18,14 +18,19 @@ List of features implemented in this version:
 - Default Arduino LED replaced by WS2812B RGB LED
 - Included driver for WS2812(B) LED
 - Exporting function to drive the WS2812(B) LED (or a strip) from Arduino Sketch
+- Exporting function to set core freq from user sketch
+- blink RGB LED in Red on flash write and Green on flash read 
+- Set EEPRom value to indicate what caused starup/reset (reset, watchdog, flash, POR, ...)
 
 This is an initial release, it could contain bugs, but works fine for now. Please let me know if you find issues.
+
+You will find a testing demo sketch to use all bootloader features into ULPNode library (in examples folder) 
 
 ###Installation
 Copy the content of the ULPoptiboot folder into a new folder in your Arduino bootloaders folder  
 I copied mine at : arduino-install-dir\hardware\arduino\bootloaders\ulpnode\  
 Backup the original files before overwrite all files.  
-make ulpnode  
+ulpnode.bat
 
 ###Possible issues
 - None for now
