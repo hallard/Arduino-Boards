@@ -1,5 +1,5 @@
 
-ulpnode_250000_16000000Hz.elf:     file format elf32-avr
+ULPNode_250000_16000000Hz.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000028  00000000  00000000  000004a3  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000009c5  00000000  00000000  000004cb  2**0
+  6 .debug_info   000009c6  00000000  00000000  000004cb  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000334  00000000  00000000  00000e90  2**0
+  7 .debug_abbrev 00000323  00000000  00000000  00000e91  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000553  00000000  00000000  000011c4  2**0
+  8 .debug_line   00000553  00000000  00000000  000011b4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000000f4  00000000  00000000  00001718  2**2
+  9 .debug_frame  000000f4  00000000  00000000  00001708  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000336  00000000  00000000  0000180c  2**0
+ 10 .debug_str    00000336  00000000  00000000  000017fc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000083c  00000000  00000000  00001b42  2**0
+ 11 .debug_loc    0000083c  00000000  00000000  00001b32  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000b0  00000000  00000000  0000237e  2**0
+ 12 .debug_ranges 000000b0  00000000  00000000  0000236e  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -155,9 +155,9 @@ int main(void) {
   __bl_setCoreFrequency(FREQ_MHZ);
     7c4c:	80 e1       	ldi	r24, 0x10	; 16
     7c4e:	ff d0       	rcall	.+510    	; 0x7e4e <__bl_setCoreFrequency>
+  // Set the clock speed
   //clock_prescale_set(clock_div_2);
   
-
   // powering the sensors and RGB LED if wa want to blink it
   #if defined (PWR_SENSOR) && defined (WS2812) && (LED_START_FLASHES > 0)
     PWR_SENSOR_PORT &= ~_BV(PWR_SENSOR); // Set pin to 0 (enable powering module)
@@ -303,8 +303,8 @@ void watchdogReset() {
       
       // reading from flash, green blink
       #if defined(WS2812) && defined(LED_DATA_FLASH)
-        led.g = 32;
-    7cbc:	30 e2       	ldi	r19, 0x20	; 32
+        led.g = (uint8_t) LED_DATA_FLASH;
+    7cbc:	30 e4       	ldi	r19, 0x40	; 64
     7cbe:	d3 2e       	mov	r13, r19
 	     */
 	    do {
@@ -432,7 +432,7 @@ void watchdogReset() {
       
       // Writing to flash, red blink
       #if defined(WS2812) && defined(LED_DATA_FLASH)
-        led.r = 32;
+        led.r = (uint8_t) LED_DATA_FLASH;
     7d28:	dd 82       	std	Y+5, r13	; 0x05
         led.g = led.b = 0;
     7d2a:	1e 82       	std	Y+6, r1	; 0x06
@@ -600,7 +600,7 @@ static inline void writebuffer(int8_t memtype, uint8_t *mybuff,
       
       // reading from flash, green blink
       #if defined(WS2812) && defined(LED_DATA_FLASH)
-        led.g = 32;
+        led.g = (uint8_t) LED_DATA_FLASH;
     7ddc:	dc 82       	std	Y+4, r13	; 0x04
         led.r = led.b = 0;
     7dde:	1e 82       	std	Y+6, r1	; 0x06
