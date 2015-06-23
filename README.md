@@ -2,6 +2,7 @@
 
 This repository contains support for the following Arduino compatible development boards:
 * [ULPNode](http://hallard.me/category/ulpnode/)
+* [ArduiNode](http://hallard.me/category/ulpnode/) Above ULPNode early prototypes, for reference only
 
 Each board will be added as an entry to the Arduino **Tools** > **Board** menu.
 
